@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  font-family: "Orbitron", sans-serif;
+
+  background: url("assets/images/gif-bg.gif") no-repeat center;
+  background-size: cover;
+  background-color: #1d0042;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  transition: all 0.1s linear;
+  cursor: pointer;
+  font-size: 10em;
+  line-height: 100%;
+  display: flex;
+  align-self: center;
+  margin: 0;
+  color: aliceblue;
+  filter: drop-shadow(0 0 0.7rem rgb(255, 255, 255));
+  &.start:hover {
+    font-size: 12em;
+    filter: drop-shadow(0 0 4rem rgb(230, 192, 240));
+  }
+}
+
+.reset {
+  
+
+  padding:30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+    font-size: 2em;
+  &:hover {
+    font-size: 2.2em!important;
+  }
+}
+
+.memory-game {
+  display:flex;
+  justify-content: center;
+  width: 1400px;
+}
+
+.settings {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  h1 {
+    cursor: default;
+  }
+  .options {
+    gap: 40px;
+    h1 {
+      display: flex;
+      cursor: pointer;
+      color: #f2ff00;
+      font-size: 6em;
+      &:hover {
+        color: #ffbf34;
+        filter: drop-shadow(0 0 4rem rgb(230, 192, 240));
+      }
+    }
+  }
+  &.settings--mode {
+    .options {
+      display: flex;
+      flex-direction: column;
+      h1:hover {
+        font-size: 7em;
+      }
+    }
+  }
+  &.settings--level {
+    justify-content: center;
+    gap: 60px;
+    .options {
+      display: flex;
+      flex-direction: row;
+      gap: 100px;
+    }
+  }
+}
+
+.cards-field {
+  width: 100%;
+  height: 80vh;
+  display: grid;
+  //!!!!!
+  //grid-template-columns IS CREATING DIMENSIONS OF THE FIELD AND
+  //IT IS SETTING ACCORDING TO THE DIFFICULTY IN src/scripts.ts
+  //////////////////////////
+  place-items: center;
+  margin-top: 70px;
+  row-gap: 6%;
+  grid-auto-rows: 1fr;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px; 
+
+  cursor: pointer;
+  align-self: stretch;
+  aspect-ratio: 0.7;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.opened .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  border-radius: 7%;
+  border: 4px solid #ced0c0;
+
+  background-image: url("assets/images/card-back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.flip-card-back {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 7%;
+  border: 4px solid #ced0c0;
+  transform: rotateY(-180deg);
+}
