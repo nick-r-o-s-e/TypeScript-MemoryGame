@@ -1,6 +1,6 @@
 # TypeScript-MemoryGame
 
-- Simple Card-Memory Game
+- Simple Memory Game
 - Generated and controlled by single typescript file
 
 ## Dev Server
