@@ -29,9 +29,10 @@ const setOfColors = [
   "darkcyan",
 ];
 
-const colors = [...setOfColors, ...setOfColors];// 12 COLORS X2(to have 2 sets of the same 6 pairs for last level(24 cards))
+const colors = [...setOfColors, ...setOfColors]; // 12 COLORS X2(to have 2 sets of the same 6 pairs for last level(24 cards))
 
-const shuffle = (cards: string[]) => {//ARRAY SHUFFLE HELPER
+const shuffle = (cards: string[]) => {
+  //ARRAY SHUFFLE HELPER
   var i = 0,
     j = 0,
     temp = null;
@@ -44,7 +45,10 @@ const shuffle = (cards: string[]) => {//ARRAY SHUFFLE HELPER
   }
 };
 
-const setup: (string | number)[] = [];//TRACK CHOSEN SETTINGS FOR startGame() function
+const setup: (string | number)[] = []; //TRACK CHOSEN SETTINGS FOR startGame() function
+
+// const countOfGuessesElement = document.querySelector(".count");
+// let count = 0;
 
 const displaySettings = () => {
   const modeSettings = <HTMLDivElement>(
@@ -86,7 +90,6 @@ const displaySettings = () => {
   });
 };
 
-
 const initializeGame = () => {
   const startBtn = document.createElement("h1");
   startBtn.classList.add("start");
@@ -97,7 +100,6 @@ const initializeGame = () => {
     startBtn.style.display = "none";
     displaySettings();
   });
-  
 };
 initializeGame();
 
@@ -108,7 +110,7 @@ const arrayEqualsCheck = (
 
 const startGame = (indentifiers: string[], dif: number, mode: string) => {
   document.querySelector("body").style.background =
-    "#1d0042 url('https://www.transparenttextures.com/patterns/cubes.png')";
+    "#1d0042 url('https://www.transparenttextures.com/patterns/gplay.png')";
 
   for (let i = 0; i < difficulties[dif]; i++) {
     indentifiers.push(colors[i]);
@@ -117,7 +119,8 @@ const startGame = (indentifiers: string[], dif: number, mode: string) => {
   shuffle(indentifiers);
   console.log(indentifiers);
 
-  cardField.style.gridTemplateColumns = `repeat(${//CREATE DIMENSIONS OF THE GRID FOR EACH LEVEL
+  cardField.style.gridTemplateColumns = `repeat(${
+    //CREATE DIMENSIONS OF THE GRID FOR EACH LEVEL
     difficulties[dif] / 2 < 3
       ? 3
       : difficulties[dif] / 2 == 3
@@ -238,10 +241,12 @@ const handleCardClick = (
   const pickedCard: (string | number)[] = [index, indentifier];
 
   if (cardsOpened == 0) {
+    // countOfGuessesElement.innerHTML = String(++count);
     openedCard = [index, indentifier];
     cardsOpened++;
   } else if (arrayEqualsCheck(pickedCard, openedCard)) {
   } else if (pickedCard[1] == openedCard[1]) {
+    // countOfGuessesElement.innerHTML = String(++count);
     disableAllCards();
     rightGuessedCardsIndexes.push(Number(openedCard[0]), Number(pickedCard[0]));
 
@@ -257,6 +262,7 @@ const handleCardClick = (
       }
     }, 1300);
   } else {
+    // countOfGuessesElement.innerHTML = String(++count);
     disableAllCards();
     setTimeout(() => {
       hideCards(Number(openedCard[0]), Number(pickedCard[0]));
@@ -287,8 +293,10 @@ const displayWinner = () => {
 };
 
 const resetGame = () => {
-    location.reload();
+  // count = 0;
+  // countOfGuessesElement.innerHTML = String(count);
+  location.reload();
 };
 
-const restartBtn = document.querySelector(".reset")
-restartBtn.addEventListener("click", resetGame)
+const restartBtn = document.querySelector(".reset");
+restartBtn.addEventListener("click", resetGame);
